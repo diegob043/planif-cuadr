@@ -1,0 +1,19 @@
+use('PracticasCuad');
+//db.createCollection('practicas');
+const fecha = new Date().toISOString().split('T')[0]; 
+const hora = new Date().toTimeString().split(' ')[0];
+
+db.practicas.insertOne({
+    _idRecursos: ObjectId(),
+    _idComuna: ObjectId(),
+    _idTipoPract: ObjectId(),
+    _idRetroaliment: ObjectId(),
+    nombre: 'Practica 1',
+    numCuadrilla: 1,
+    descripcion: 'Prueba de descripcion practica 1',
+    ejercicios: 'Apagado de incendio',
+    estado: 'Pendiente',
+    fecha: fecha,
+    hora: hora,
+    fechaHoraCreac: new Date(),
+})

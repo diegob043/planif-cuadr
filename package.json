@@ -1,0 +1,19 @@
+{
+  "name": "pract-plan-ejec-trab-sem-mdd",
+  "version": "1.0.0",
+  "description": "- Luis Acuña\r - Fernanda Schonffeldt\r - John Henriquez\r - Ninoska Paredes\r - Diego Ampuero",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon src/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongodb": "^5.6.0",
+    "mongoose": "^7.3.1",
+    "uuid": "^9.0.0"
+  }
+}

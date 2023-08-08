@@ -35,13 +35,13 @@ const practicaSchema = new mongoose.Schema({
     type: String,
   },
   fecha: {
-    type: Date,
+    type: String,
   },
   hora: {
     type: String,
   },
   fechaHoraCreac: {
-    type: Date,
+    type: String,
   }
 
 }, { collection: 'practicas',  versionKey: false});

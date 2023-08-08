@@ -1,3 +1,4 @@
+const { ObjectId } = require('mongodb');
 const Practica = require('../../models/practica.model.js');
 const mongoose = require('mongoose');
 
@@ -34,12 +35,12 @@ exports.getAllPracticas = async (req, res) => {
 exports.createPractica = async (req, res) => {
   try {
     const practicas = new Practica({
-        _idRecursos: req.body._idRecursos,
-        _idComuna: req.body._idComuna,
-        _idTipoPract: req.body._idTipoPract,
-        _idRetroaliment: req.body._idRetroaliment,
+        _idRecursos: ObjectId(),
+        _idComuna: ObjectId(),
+        _idTipoPract: ObjectId(),
+        _idRetroaliment: ObjectId(),
         nombre: req.body.nombre,
-        numCuadrilla: req.body.numCuadrilla,
+        numCuadrilla: parseInt(req.body.numCuadrilla),
         descripcion: req.body.descripcion,
         ejercicios: req.body.ejercicios,
         estado: req.body.estado,
@@ -52,6 +53,7 @@ exports.createPractica = async (req, res) => {
     res.status(201).json(nuevaPractica);
   } catch (error) {
     res.status(400).json({ message: error.message });
+    res.json(error)
   }
 };
 

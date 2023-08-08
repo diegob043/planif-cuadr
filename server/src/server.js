@@ -8,13 +8,11 @@ const cors = require("cors")
 
 const app = express() //Crea la instancia de la aplicacion
 app.use(express.json())
-
 app.use(
   cors({
     origin: "http://localhost:5173", //ESTA WEA SIRVE PA QUE NO TE TIRE EL ERROR DE CORS EN EL PUTO NAVEGADOR DE MIERDA :) 8========Bs
   })
 )
-
 require("./configDB")
 
 app.use("/api", indexRoutes) // Agrega el enrutador principal al servidor

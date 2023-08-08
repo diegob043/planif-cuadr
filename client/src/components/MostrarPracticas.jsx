@@ -3,7 +3,7 @@ import axios from "axios"
 
 const Practica = ({ practica, onDelete }) => {
   return (
-    <div className='container'>
+    <div className='container mt-3'>
       <div className='row'>
         <div className='col'>
           <div className='card mb-3'>
@@ -56,24 +56,31 @@ const MostrarPracticas = () => {
       })
   }
 
+  const style = {
+    height: 1000,
+    zIndex: 0,
+  }
+
   return (
-    <div
-      className='container justify-content-center align-items-center overflow-auto mt-5 border'
-      style={{ zIndex: 0 , height: 1200}}
-    >
-      <div className='row'>
-        <div className='col'>
-          <h1 className='text-center mb-4 mt-2'>Prácticas Creadas</h1>
-          {practicas.map((practica) => (
-            <Practica
-              key={practica._id}
-              practica={practica}
-              onDelete={handleDelete}
-            />
-          ))}
+    <>
+      <h1 className='text-center mb-4 mt-2'>Prácticas Creadas</h1>
+      <div
+        className='container justify-content-center align-items-center overflow-auto mt-5 border'
+        style={style}
+      >
+        <div className='row'>
+          <div className='col'>
+            {practicas.map((practica) => (
+              <Practica
+                key={practica._id}
+                practica={practica}
+                onDelete={handleDelete}
+              />
+            ))}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   )
 }
 

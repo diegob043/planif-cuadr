@@ -1,19 +1,26 @@
 import { Formik, Form, Field } from "formik"
-import { useEffect } from "react"
+import axios from 'axios'
+import mongoose from "mongoose"
 
 const CrearPractica = () => {
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
+  console.log(values);
 
-    console.log(values)
+  try {
+    const response = await axios.post('http://localhost:3000/api/diego',values);
 
-    fetch('http://localhost:3000/api/diego', {
-      method: 'POST',
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: values
-    })
+    if (response.status===201) {
+      console.log('Solicitud Post exitosa');
+      // Realiza acciones adicionales en caso de éxito
+    } else {
+      console.error('Error en la solicitud Post', response.statusText);
+      // Maneja errores en la solicitud
+    }
+  } catch (error) {
+    console.error('Error al realizar la solicitud Post:', error);
+    // Maneja errores de red u otras excepciones
   }
+};
 
   return (
     <div className='container d-flex justify-content-center align-items-center vh-100'>
@@ -23,13 +30,18 @@ const CrearPractica = () => {
         {/* Aplica el estilo personalizado */}
         <Formik
           initialValues={{
+            _idRecursos: new mongoose.Types.ObjectId(),
+            _idComuna: new mongoose.Types.ObjectId(),
+            _idTipoPract: new mongoose.Types.ObjectId(),
+            _idRetroaliment: new mongoose.Types.ObjectId(),
             nombre: "",
             numCuadrilla: "",
             descripcion: "",
             ejercicios: "",
             estado: "",
             fecha: "",
-            hora: ""
+            hora: "",
+            fechaHoraCreac: "22-06-2021 12:00:00",
           }}
           onSubmit={handleSubmit}
         >

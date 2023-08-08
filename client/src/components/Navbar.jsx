@@ -1,7 +1,7 @@
 const Navbar = () => {
   return (
     <>
-      <nav className='navbar navbar-expand-lg bg-body-tertiary'>
+      <nav className='navbar navbar-expand-lg bg-body-tertiary' style={{zIndex: 1}}>
         <div className='container-fluid'>
           <a className='navbar-brand' href='/'>
             Practicas

@@ -35,10 +35,10 @@ exports.getAllPracticas = async (req, res) => {
 exports.createPractica = async (req, res) => {
   try {
     const practicas = new Practica({
-        _idRecursos: ObjectId(),
-        _idComuna: ObjectId(),
-        _idTipoPract: ObjectId(),
-        _idRetroaliment: ObjectId(),
+        _idRecursos: new ObjectId(),
+        _idComuna: new ObjectId(),
+        _idTipoPract: new ObjectId(),
+        _idRetroaliment: new ObjectId(),
         nombre: req.body.nombre,
         numCuadrilla: parseInt(req.body.numCuadrilla),
         descripcion: req.body.descripcion,

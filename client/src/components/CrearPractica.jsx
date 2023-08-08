@@ -1,33 +1,35 @@
 import { Formik, Form, Field } from "formik"
-import axios from 'axios'
+import axios from "axios"
 import mongoose from "mongoose"
 
 const CrearPractica = () => {
   const handleSubmit = async (values) => {
-  console.log(values);
+    console.log(values)
 
-  try {
-    const response = await axios.post('http://localhost:3000/api/diego',values);
+    try {
+      const response = await axios.post(
+        "http://localhost:3000/api/diego",
+        values
+      )
 
-    if (response.status===201) {
-      console.log('Solicitud Post exitosa');
-      // Realiza acciones adicionales en caso de éxito
-    } else {
-      console.error('Error en la solicitud Post', response.statusText);
-      // Maneja errores en la solicitud
+      if (response.status === 201) {
+        console.log("Solicitud Post exitosa")
+        alert('Practica creada!')
+        // Realiza acciones adicionales en caso de éxito
+      } else {
+        console.error("Error en la solicitud Post", response.statusText)
+        alert('Error!!!')
+      }
+    } catch (error) {
+      console.error("Error al realizar la solicitud Post:", error)
+      alert('Error!!!')
     }
-  } catch (error) {
-    console.error('Error al realizar la solicitud Post:', error);
-    // Maneja errores de red u otras excepciones
   }
-};
 
   return (
     <div className='container d-flex justify-content-center align-items-center vh-100'>
       <div className='col-lg-6 my-form-container'>
-        <h1>Crea una práctica</h1>
-        {" "}
-        {/* Aplica el estilo personalizado */}
+        <h1>Crea una práctica</h1> {/* Aplica el estilo personalizado */}
         <Formik
           initialValues={{
             _idRecursos: new mongoose.Types.ObjectId(),
